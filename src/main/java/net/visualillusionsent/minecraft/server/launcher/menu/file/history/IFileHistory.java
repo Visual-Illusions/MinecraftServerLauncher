@@ -14,6 +14,13 @@
  *
  * You should have received a copy of the GNU General Public License along with VisualIllusionsMinecraftServerLauncher.
  * If not, see http://www.gnu.org/licenses/gpl.html.
+ *
+ * Minecraft is the property of Mojang AB/Notch Development AB
+ * Copyright &copy; 2009-2013 [Mojang AB](http://mojang.com)
+ * "Minecraft" is a trademark of Notch Development AB
+ *
+ * Visual Illusions Minecraft Server Launcher and Visual Illusions Entertainment are
+ * NOT affilated with, endorsed, or sponsored by with Mojang AB or Notch Development AB.
  */
 package net.visualillusionsent.minecraft.server.launcher.menu.file.history;
 
