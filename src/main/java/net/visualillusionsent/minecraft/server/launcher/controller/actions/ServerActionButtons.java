@@ -20,7 +20,7 @@
  * "Minecraft" is a trademark of Notch Development AB
  *
  * Visual Illusions Minecraft Server Launcher and Visual Illusions Entertainment are
- * NOT affilated with, endorsed, or sponsored by with Mojang AB or Notch Development AB.
+ * NOT affilated with, endorsed by, or sponsored by Mojang AB or Notch Development AB.
  */
 package net.visualillusionsent.minecraft.server.launcher.controller.actions;
 
