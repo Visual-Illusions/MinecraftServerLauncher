@@ -25,25 +25,25 @@ Please place logs either in a code block (press M in your browser for a Markdown
 Legal Info
 ==============
 
-Visual Illusions Minecraft Server Launcher (VIMCSL)
-Copyright &copy; 2013 Visual Illusions Entertainment
+Visual Illusions Minecraft Server Launcher (VIMCSL)<br/>
+Copyright &copy; 2013 Visual Illusions Entertainment<br/>
 
-VIMCSL is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+VIMCSL is free software: you can redistribute it and/or modify<br/>
+it under the terms of the GNU General Public License as published by<br/>
+the Free Software Foundation, either version 3 of the License, or<br/>
+(at your option) any later version.<br/>
 
-VIMCSL is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU General Public License for more details.
+VIMCSL is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;<br/>
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.<br/>
+See the GNU General Public License for more details.<br/>
 
-You should have received a copy of the GNU General Public License along with VIMCSL.
-If not, see http://www.gnu.org/licenses/gpl.html
+You should have received a copy of the GNU General Public License along with VIMCSL.<br/>
+If not, see http://www.gnu.org/licenses/gpl.html<br/>
 
-Minecraft is the property of Mojang AB/Notch Development AB
-Copyright &copy; 2009-2013 [Mojang AB](http://mojang.com)
-"Minecraft" is a trademark of Notch Development AB
+Minecraft is the property of Mojang AB/Notch Development AB<br/>
+Copyright &copy; 2009-2013 [Mojang AB](http://mojang.com)<br/>
+"Minecraft" is a trademark of Notch Development AB<br/>
 
-Visual Illusions Minecraft Server Launcher and Visual Illusions Entertainment are
-NOT affilated with, endorsed, or sponsored by with Mojang AB or Notch Development AB.
+Visual Illusions Minecraft Server Launcher and Visual Illusions Entertainment are<br/>
+NOT affilated with, endorsed, or sponsored by with Mojang AB or Notch Development AB.<br/>
 
