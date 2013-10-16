@@ -1,0 +1,51 @@
+/*
+ * This file is part of VisualIllusionsMinecraftServerLauncher.
+ *
+ * Copyright © 2013 Visual Illusions Entertainment
+ *
+ * VisualIllusionsMinecraftServerLauncher is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * VisualIllusionsMinecraftServerLauncher is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with VisualIllusionsMinecraftServerLauncher.
+ * If not, see http://www.gnu.org/licenses/gpl.html.
+ */
+package net.visualillusionsent.minecraft.server.launcher.menu.server;
+
+import net.visualillusionsent.minecraft.server.launcher.ControlRoom;
+import net.visualillusionsent.minecraft.server.launcher.menu.MainMenuBar;
+
+import javax.swing.*;
+
+/** @author Jason (darkdiplomat) */
+public final class ServerMenu extends JMenu {
+    private static final long serialVersionUID = -5611170037228493548L;
+    private final JMenuItem start, stop, restart, kill;
+
+    public ServerMenu(MainMenuBar mmb) {
+        super("Server");
+        this.setSize(25, 20);
+        this.start = new ServerStartMenuItem(this);
+        this.stop = new ServerStopMenuItem(this);
+        this.restart = new ServerRestartMenuItem(this);
+        this.kill = new ServerKillMenuItem(this);
+        this.add(start);
+        this.add(stop);
+        this.add(restart);
+        this.add(kill);
+        this.add(new ServerOpenPathMenuItem(this));
+    }
+
+    public final void setRunningState() {
+        boolean running = ControlRoom.isServerRunning();
+        this.start.setEnabled(!running);
+        this.stop.setEnabled(running);
+        this.restart.setEnabled(running);
+        this.kill.setEnabled(running);
+    }
+}
