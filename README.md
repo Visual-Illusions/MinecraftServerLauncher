@@ -2,7 +2,7 @@ Visual Illusions Minecraft Server Launcher
 ==========================
 Copyright &copy; 2013 Visual Illusions Entertainment
 
-Local Minecraft Server Management Graphical User Interface.
+Local Minecraft Server Management Graphical User Interface.<br/>
 Designed to help modders/plugin designers with their development process.
 
 Visual Illusions Minecraft Server Launcher is designed for Java 6 compatibility.
@@ -10,7 +10,8 @@ Visual Illusions Minecraft Server Launcher is designed for Java 6 compatibility.
 Reporting Issues
 ================
 
-If you encounter an issue while using Visual Illusions Minecraft Server Launcher, first search the issue list to see if it has already been reported.
+If you encounter an issue while using Visual Illusions Minecraft Server Launcher,<br/>
+first search the issue list to see if it has already been reported.<br/>
 Include closed issues in your search.
 
 If it has not been reported, create a new issue with at least the following information:
@@ -45,5 +46,5 @@ Copyright &copy; 2009-2013 [Mojang AB](http://mojang.com)<br/>
 "Minecraft" is a trademark of Notch Development AB<br/>
 
 Visual Illusions Minecraft Server Launcher and Visual Illusions Entertainment are<br/>
-NOT affilated with, endorsed, or sponsored by with Mojang AB or Notch Development AB.<br/>
+NOT affilated with, endorsed by, or sponsored by Mojang AB or Notch Development AB.<br/>
 

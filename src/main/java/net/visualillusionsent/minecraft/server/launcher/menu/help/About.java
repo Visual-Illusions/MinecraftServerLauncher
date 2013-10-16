@@ -89,7 +89,7 @@ public final class About extends JPanel implements MouseListener {
             kit.insertHTML(doc, doc.getLength(), "<p style=\"font-size:10px;text-align:center\"><a href=\"http://minecraft.net\"><u>Minecraft</u></a> is the property of Mojang AB/Notch Development AB</p>", 0, 0, null);
             kit.insertHTML(doc, doc.getLength(), "<p style=\"font-size:10px;text-align:center\">Copyright &copy; 2009-2013 <a href=\"http://mojang.com\"><u>Mojang AB</u></a></p>", 0, 0, null);
             kit.insertHTML(doc, doc.getLength(), "<p style=\"font-size:10px;text-align:center\">\"Minecraft\" is a trademark of Notch Development AB</p>", 0, 0, null);
-            kit.insertHTML(doc, doc.getLength(), "<p style=\"font-size:10px;text-align:center\">Visual Illusions Minecraft Server Launcher and Visual Illusions Entertainment are NOT affilated with, endorsed, or sponsored by with Mojang AB or Notch Development AB. </p>", 0, 0, null);
+            kit.insertHTML(doc, doc.getLength(), "<p style=\"font-size:10px;text-align:center\">Visual Illusions Minecraft Server Launcher and Visual Illusions Entertainment are NOT affilated with, endorsed by, or sponsored by Mojang AB or Notch Development AB. </p>", 0, 0, null);
         }
         catch (BadLocationException e) {
         }
