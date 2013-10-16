@@ -41,7 +41,7 @@ See the GNU General Public License for more details.<br/>
 You should have received a copy of the GNU General Public License along with VIMCSL.<br/>
 If not, see http://www.gnu.org/licenses/gpl.html<br/>
 
-Minecraft is the property of Mojang AB/Notch Development AB<br/>
+[Minecraft](http://minecraft.net) is the property of Mojang AB/Notch Development AB<br/>
 Copyright &copy; 2009-2013 [Mojang AB](http://mojang.com)<br/>
 "Minecraft" is a trademark of Notch Development AB<br/>
 
