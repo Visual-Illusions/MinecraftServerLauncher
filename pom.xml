@@ -80,6 +80,63 @@
     <build>
         <finalName>${project.name}-${project.version}</finalName>
         <plugins>
+            <!-- Timestamp for year -->
+            <plugin>
+                <groupId>com.keyboardsamurais.maven</groupId>
+                <artifactId>maven-timestamp-plugin</artifactId>
+                <version>1.0</version>
+                <configuration>
+                    <propertyName>current.year</propertyName>
+                    <timestampPattern>yyyy</timestampPattern>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>pre-clean</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Update About HTML -->
+            <plugin>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                <artifactId>replacer</artifactId>
+                <version>1.5.2</version>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <includes>
+                        <!-- About HTML -->
+                        <include>target/classes/resources/about.html</include>
+                    </includes>
+                    <replacements>
+                        <replacement>
+                            <token>{version}</token>
+                            <value>${project.version}</value>
+                        </replacement>
+                        <replacement>
+                            <token>{build.status}</token>
+                            <value>${build.status}</value>
+                        </replacement>
+                        <replacement>
+                            <token>{vi.copyright}</token>
+                            <value>${project.inceptionYear}</value>
+                        </replacement>
+                        <replacement>
+                            <token>{mojang.copyright}</token>
+                            <value>2009-${current.year}</value>
+                        </replacement>
+                    </replacements>
+                    <regex>false</regex>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>com.mycila.maven-license-plugin</groupId>
                 <artifactId>maven-license-plugin</artifactId>

@@ -32,6 +32,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.util.logging.Level;
 
 /** @author Jason (darkdiplomat) */
 public final class CentralPanel extends JFrame {
@@ -57,9 +58,10 @@ public final class CentralPanel extends JFrame {
         this.add(new CopyrightPanel(this), BorderLayout.SOUTH);
         Image favicon = null;
         try {
-            favicon = ImageIO.read(this.getClass().getResource("/resources/img/favicon.png"));
+            favicon = ImageIO.read(CentralPanel.class.getResourceAsStream("/resources/img/favicon.png"));
         }
         catch (IOException ex) {
+            ControlRoom.log(Level.SEVERE, "Failed to get resource: 'favicon.png'", ex);
         }
 
         if (favicon != null) {

@@ -24,6 +24,10 @@
  */
 package net.visualillusionsent.minecraft.server.launcher.display;
 
+import net.visualillusionsent.minecraft.server.launcher.ControlRoom;
+
+import java.util.logging.Level;
+
 /** @author Jason (darkdiplomat) */
 public final class OutputThread extends Thread {
     private final OutputQueue queue;
@@ -44,7 +48,7 @@ public final class OutputThread extends Thread {
                 sleep(2L);
             }
             catch (Exception ex) {
-
+                ControlRoom.log(Level.SEVERE, "Error occured while writing to Log Panel", ex);
             }
         }
     }

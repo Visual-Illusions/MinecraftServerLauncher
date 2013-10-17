@@ -39,7 +39,6 @@ import java.awt.*;
 import java.io.File;
 import java.util.jar.JarFile;
 import java.util.jar.Manifest;
-import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 
 /** @author Jason (darkdiplomat) */
@@ -114,13 +113,18 @@ public final class ControlRoom extends Thread {
     }
 
     public final void exit() {
+        log(Level.FINE, "Preparing to exit...", null);
         if (isServerRunning()) {
+            log(Level.FINE, "Server Running. Stopping...", null);
             pad.stopServer(false);
         }
+        log(Level.FINE, "Disposing of GUI...", null);
         central.setVisible(false);
         central.dispose();
+        log(Level.FINE, "Saving settings...", null);
         LaunchSettings.$.saveProps();
         sfh.saveHistoryEntries();
+        log(Level.FINE, "Exiting...", null);
         logger.close();
     }
 
@@ -141,6 +145,15 @@ public final class ControlRoom extends Thread {
 
     public static final void logFine(String msg) {
         $.logger.fine(msg);
+    }
+
+    public static final void log(Level level, String msg, Throwable thrown) {
+        if (thrown != null) {
+            $.logger.log(level, msg, thrown);
+        }
+        else {
+            $.logger.log(level, msg);
+        }
     }
 
     public static final int getRAM() {
@@ -182,6 +195,7 @@ public final class ControlRoom extends Thread {
             return new JarFile(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI().getPath()).getManifest();
         }
         catch (Exception ex) {
+            log(Level.SEVERE, "Unable to read Manifest...", ex);
         }
         return null;
     }
@@ -232,15 +246,15 @@ public final class ControlRoom extends Thread {
 
     public final void run() {
         if (!started) {
+            log(Level.FINE, "Starting Server Launcher...", null);
             started = true;
-            logger.setLevel(Level.ALL);
-            ConsoleHandler cohan = new ConsoleHandler();
-            cohan.setLevel(Level.ALL);
-            logger.addHandler(cohan);
+            log(Level.FINE, "Checking manifest...", null);
             this.mf = getManifest();
+            log(Level.FINE, "Launching GUI...", null);
             central = new CentralPanel(this);
             pad = new LaunchPad(this);
             sfh = new FileHistory(new ServerHistory(central, central.getMainMenu()), getAppData("server_history.hst"));
+            log(Level.FINE, "Initializing history...", null);
             sfh.initFileMenuHistory();
             queue = new OutputQueue();
             formatter = new LogPanelFormatter();

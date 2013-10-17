@@ -36,8 +36,11 @@ import javax.swing.text.html.HTMLEditorKit;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URISyntaxException;
+import java.util.logging.Level;
 
 /** @author Jason (darkdiplomat) */
 public final class About extends JPanel implements MouseListener {
@@ -47,17 +50,21 @@ public final class About extends JPanel implements MouseListener {
 
     About() {
         window = new JWindow();
-        this.setPreferredSize(new Dimension(450, 350));
+        this.setPreferredSize(new Dimension(650, 550));
         this.setVisible(true);
         this.setLayout(null);
 
         JTextPane text = new JTextPane();
-        text.setBounds(5, 150, 425, 300);
+        text.setBounds(5, 150, 625, 525);
         text.setVisible(true);
         text.setEditable(false);
         text.setOpaque(false);
-        HTMLEditorKit kit = new HTMLEditorKit();
-        HTMLDocument doc = new HTMLDocument();
+        HTMLEditorKit htmlKit = new HTMLEditorKit() {
+            public Parser getParser() {
+                return super.getParser();
+            }
+        };
+        HTMLDocument htmlDoc = new HTMLDocument();
         text.addHyperlinkListener(new HyperlinkListener() {
             public void hyperlinkUpdate(HyperlinkEvent e) {
                 if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
@@ -70,31 +77,30 @@ public final class About extends JPanel implements MouseListener {
                         }
                         catch (URISyntaxException e1) {
                         }
-                        try {
-                            Runtime.getRuntime().exec("xdg-open ".concat(e.getURL().toString()));
-                        }
-                        catch (IOException ioex) {
-                            System.out.println("Failed to show file: '" + e.getURL().toString() + "'. Possible unsupported File Manager...");
-                        }
+                    }
+                    try {
+                        Runtime.getRuntime().exec("xdg-open ".concat(e.getURL().toString()));
+                    }
+                    catch (IOException ioex) {
+                        ControlRoom.log(Level.WARNING, "Failed to show file: '" + e.getURL().toString() + "'. Possible unsupported File Manager...", null);
                     }
                 }
             }
         });
-        text.setEditorKit(kit);
-        text.setDocument(doc);
+        text.setEditorKit(htmlKit);
+        text.setDocument(htmlDoc);
         try {
-            kit.insertHTML(doc, doc.getLength(), "<h1 style=\"font-size:12px;text-align:center\">v. " + ControlRoom.instance().getVersion() + " " + ControlRoom.instance().getCleanStatus() + "</h1><br>", 0, 0, null);
-            kit.insertHTML(doc, doc.getLength(), "<p style=\"font-size:10px;text-align:center\">Copyright &copy; 2013 <a href=\"http://visualillusionsent.net\"><u>Visual Illusions Entertainment</u></a></p>", 0, 0, null);
-            kit.insertHTML(doc, doc.getLength(), "<p style=\"font-size:10px;text-align:center\">All Rights Reserved</p>", 0, 0, null);
-            kit.insertHTML(doc, doc.getLength(), "<p style=\"font-size:10px;text-align:center\"><a href=\"http://minecraft.net\"><u>Minecraft</u></a> is the property of Mojang AB/Notch Development AB</p>", 0, 0, null);
-            kit.insertHTML(doc, doc.getLength(), "<p style=\"font-size:10px;text-align:center\">Copyright &copy; 2009-2013 <a href=\"http://mojang.com\"><u>Mojang AB</u></a></p>", 0, 0, null);
-            kit.insertHTML(doc, doc.getLength(), "<p style=\"font-size:10px;text-align:center\">\"Minecraft\" is a trademark of Notch Development AB</p>", 0, 0, null);
-            kit.insertHTML(doc, doc.getLength(), "<p style=\"font-size:10px;text-align:center\">Visual Illusions Minecraft Server Launcher and Visual Illusions Entertainment are NOT affilated with, endorsed by, or sponsored by Mojang AB or Notch Development AB. </p>", 0, 0, null);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/resources/about.html"), "UTF-8"));
+            htmlKit.read(reader, htmlDoc, htmlDoc.getLength());
+        }
+        catch (IOException ioex) {
+            ControlRoom.log(Level.SEVERE, "Failed to read about.html", ioex);
         }
         catch (BadLocationException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
-        catch (IOException e) {
-        }
+
+        text.addMouseListener(this);
         window.getContentPane().add(text);
         window.getContentPane().add(this);
         window.addMouseListener(this);
@@ -109,7 +115,7 @@ public final class About extends JPanel implements MouseListener {
     protected final void paintComponent(Graphics gfx) {
         super.paintComponent(gfx);
         try {
-            gfx.drawImage(ImageIO.read(this.getClass().getResource("/resources/img/vimcsl_logo.png")), 50, 5, null);
+            gfx.drawImage(ImageIO.read(this.getClass().getResource("/resources/img/vimcsl_logo.png")), 150, 5, null);
         }
         catch (IOException e) {
         }

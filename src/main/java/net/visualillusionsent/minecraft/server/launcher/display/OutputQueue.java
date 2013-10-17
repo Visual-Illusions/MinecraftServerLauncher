@@ -43,7 +43,7 @@ public class OutputQueue {
     }
 
     public final String next() {
-        String line = null;
+        String line;
         synchronized (queue) {
             if (!hasNext()) {
                 try {
