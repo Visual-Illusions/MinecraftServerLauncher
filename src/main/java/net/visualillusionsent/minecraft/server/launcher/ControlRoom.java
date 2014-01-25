@@ -44,7 +44,7 @@ import java.util.regex.Pattern;
 
 /** @author Jason (darkdiplomat) */
 public final class ControlRoom extends Thread {
-    private static final Pattern modLoggerPattern = Pattern.compile("\\[\\d{2}:\\d{2}:\\d{2}(])?&nbsp;(\\[)?\\w+\\]:&nbsp;.+");
+    private static final Pattern modLoggerPattern = Pattern.compile("\\[\\d{2}:\\d{2}:\\d{2}(]&nbsp;\\[|&nbsp;).+]:&nbsp;.+");
     private static final Pattern log4jPattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}&nbsp;\\d{2}:\\d{2}:\\d{2},\\d{3}&nbsp;.+");
 
     private final String span = "<p style=\"color:%s\">%s</p>";
@@ -212,7 +212,7 @@ public final class ControlRoom extends Thread {
         return status;
     }
 
-    private static boolean stacking;
+    private static boolean stacktracing;
 
     public static final void addLineToQueue(String line, Level level) {
         String colorized = "#999999";
@@ -224,19 +224,19 @@ public final class ControlRoom extends Thread {
                 String prefix = line.substring(0, !is4j ? line.indexOf(':', 8/* Adjust 8 characters to avoid Time*/) : 60);
                 if (prefix.contains("WARN"/*ING*/) || prefix.contains("DEBUG")) {
                     colorized = "#EB7400";
-                    stacking = false;
+                    stacktracing = false;
                 }
                 else if (prefix.contains("SEVERE") || prefix.contains("ERROR") || prefix.contains("FATAL")) {
                     colorized = "red";
-                    stacking = true;
+                    stacktracing = true;
                 }
                 else if (prefix.contains("INFO")) {
                     colorized = "white";
-                    stacking = false;
+                    stacktracing = false;
                 }
             }
             else {
-                if (stacking) {
+                if (stacktracing) {
                     colorized = "red";
                 }
             }
@@ -247,8 +247,9 @@ public final class ControlRoom extends Thread {
             if (level == Level.WARNING) {
                 colorized = "#EB7400";
             }
-            else if (level == Level.SEVERE) {
+            else if (level == Level.SEVERE || line.startsWith("Exception") || stacktracing) {
                 colorized = "red";
+                stacktracing = true;
             }
             input = String.format($.span, colorized, line);
         }
