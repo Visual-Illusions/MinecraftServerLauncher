@@ -22,34 +22,22 @@
  * Visual Illusions Minecraft Server Launcher and Visual Illusions Entertainment are
  * NOT affilated with, endorsed by, or sponsored by Mojang AB or Notch Development AB.
  */
-package net.visualillusionsent.minecraft.server.launcher.controller;
-
-import net.visualillusionsent.minecraft.server.launcher.controller.actions.ServerActionButtons;
+package net.visualillusionsent.minecraft.server.launcher.display;
 
 import javax.swing.*;
 import java.awt.*;
 
-/** @author Jason (darkdiplomat) */
-public final class ServerButtonsAndRam extends JPanel {
-    private static final long serialVersionUID = 2213474889691135543L;
-    private final ServerActionButtons sab;
-    private final RAMSetPanel ram_panel;
+/**
+ * @author Jason (darkdiplomat)
+ */
+public final class LogTextPanelControl extends JPanel {
+    private final ToBottomButtom astButton;
 
-    public ServerButtonsAndRam(ServerControlPanel scp) {
-        this.setLayout(new BorderLayout());
+    public LogTextPanelControl(InputOutputPanel iopanel) {
+        this.add(new ClearPanelButton(iopanel));
+        this.add(astButton = new ToBottomButtom(iopanel));
         this.setBackground(Color.DARK_GRAY);
-        this.setSize(100, 50);
-        this.sab = new ServerActionButtons(this);
-        this.add(sab, BorderLayout.CENTER);
-        this.ram_panel = new RAMSetPanel(this);
-        this.add(ram_panel, BorderLayout.SOUTH);
-    }
-
-    public final ServerActionButtons getActionButtons() {
-        return sab;
-    }
-
-    public final RAMSetPanel getRAMBox() {
-        return ram_panel;
+        this.setForeground(Color.LIGHT_GRAY);
+        this.setSize(140, 42);
     }
 }

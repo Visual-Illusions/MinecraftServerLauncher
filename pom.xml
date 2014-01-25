@@ -29,7 +29,7 @@
                 See the GNU General Public License for more details.
 
                 Minecraft is the property of Mojang AB/Notch Development AB
-                Copyright © 2009-2013 [Mojang AB](http://mojang.com)
+                Copyright © 2009-2014 [Mojang AB](http://mojang.com)
                 "Minecraft" is a trademark of Notch Development AB
 
                 Visual Illusions Minecraft Server Launcher and Visual Illusions Entertainment are
@@ -127,7 +127,7 @@
                         </replacement>
                         <replacement>
                             <token>{vi.copyright}</token>
-                            <value>${project.inceptionYear}</value>
+                            <value>${project.inceptionYear}${current.year}</value>
                         </replacement>
                         <replacement>
                             <token>{mojang.copyright}</token>
@@ -163,7 +163,7 @@
                     </mapping>
                     <properties>
                         <name>${project.name}</name>
-                        <copyright>Copyright © ${project.inceptionYear} Visual Illusions Entertainment</copyright>
+                        <copyright>Copyright © ${project.inceptionYear}-${current.year} Visual Illusions Entertainment</copyright>
                         <mojang.copyright>2009-${current.year}</mojang.copyright>
                     </properties>
                     <includes>

@@ -1,7 +1,7 @@
 /*
  * This file is part of VisualIllusionsMinecraftServerLauncher.
  *
- * Copyright © 2013 Visual Illusions Entertainment
+ * Copyright © 2013-2014 Visual Illusions Entertainment
  *
  * VisualIllusionsMinecraftServerLauncher is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
  * If not, see http://www.gnu.org/licenses/gpl.html.
  *
  * Minecraft is the property of Mojang AB/Notch Development AB
- * Copyright &copy; 2009-2013 Mojang AB
+ * Copyright &copy; 2009-2014 Mojang AB
  * "Minecraft" is a trademark of Notch Development AB
  *
  * Visual Illusions Minecraft Server Launcher and Visual Illusions Entertainment are
@@ -26,10 +26,10 @@ package net.visualillusionsent.minecraft.server.launcher.info;
 
 /** @author Jason (darkdiplomat) */
 public enum ServerType {
-    VANILLA, //
-    CANARY, // This is more geared towards Canary Recode
-    HMOD, // Canary Classic falls under HMOD
-    BUKKIT, // Should cover anything
+    VANILLA, // Vanilla Minecraft
+    CANARY, // CanaryLib API based
+    HMOD, // HMod/CanaryClassic Based
+    BUKKIT, // Should cover anything Bukkit API based
     ;
 
 }

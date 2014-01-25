@@ -1,7 +1,7 @@
 /*
  * This file is part of VisualIllusionsMinecraftServerLauncher.
  *
- * Copyright © 2013 Visual Illusions Entertainment
+ * Copyright © 2013-2014 Visual Illusions Entertainment
  *
  * VisualIllusionsMinecraftServerLauncher is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
  * If not, see http://www.gnu.org/licenses/gpl.html.
  *
  * Minecraft is the property of Mojang AB/Notch Development AB
- * Copyright &copy; 2009-2013 Mojang AB
+ * Copyright &copy; 2009-2014 Mojang AB
  * "Minecraft" is a trademark of Notch Development AB
  *
  * Visual Illusions Minecraft Server Launcher and Visual Illusions Entertainment are
@@ -32,9 +32,13 @@ public final class LogPanel extends JScrollPane {
     private static final long serialVersionUID = -1982612246485683075L;
     private LogTextPanel logtext;
 
-    public LogPanel(InputOutputPanel iopanel) {
+    public LogPanel(final InputOutputPanel iopanel) {
         logtext = new LogTextPanel(this);
         this.setViewportView(logtext);
+        this.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_ALWAYS);
+        this.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_ALWAYS);
+
+        this.getVerticalScrollBar().addAdjustmentListener(new SmartScroller(this));
     }
 
     public LogTextPanel getLogTextPanel() {

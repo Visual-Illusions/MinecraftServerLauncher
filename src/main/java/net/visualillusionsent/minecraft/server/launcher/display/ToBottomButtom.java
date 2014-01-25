@@ -22,34 +22,49 @@
  * Visual Illusions Minecraft Server Launcher and Visual Illusions Entertainment are
  * NOT affilated with, endorsed by, or sponsored by Mojang AB or Notch Development AB.
  */
-package net.visualillusionsent.minecraft.server.launcher.controller;
-
-import net.visualillusionsent.minecraft.server.launcher.controller.actions.ServerActionButtons;
+package net.visualillusionsent.minecraft.server.launcher.display;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-/** @author Jason (darkdiplomat) */
-public final class ServerButtonsAndRam extends JPanel {
-    private static final long serialVersionUID = 2213474889691135543L;
-    private final ServerActionButtons sab;
-    private final RAMSetPanel ram_panel;
+/**
+ * @author Jason (darkdiplomat)
+ */
+public class ToBottomButtom extends JButton implements MouseListener {
+    private final LogPanel logPanel;
 
-    public ServerButtonsAndRam(ServerControlPanel scp) {
-        this.setLayout(new BorderLayout());
-        this.setBackground(Color.DARK_GRAY);
-        this.setSize(100, 50);
-        this.sab = new ServerActionButtons(this);
-        this.add(sab, BorderLayout.CENTER);
-        this.ram_panel = new RAMSetPanel(this);
-        this.add(ram_panel, BorderLayout.SOUTH);
+    public ToBottomButtom(InputOutputPanel iopanel) {
+        super("Return to Bottom");
+        this.setSelected(true);
+        Dimension size = new Dimension(20, 25);
+        this.setSize(size);
+        this.setEnabled(true);
+        this.setVisible(true);
+        this.addMouseListener(this);
+        this.logPanel = iopanel.getLogPanel();
     }
 
-    public final ServerActionButtons getActionButtons() {
-        return sab;
+    @Override
+    public final void mouseClicked(MouseEvent e) {
+        BoundedRangeModel listModel = logPanel.getVerticalScrollBar().getModel();
+        logPanel.getVerticalScrollBar().setValue(listModel.getMaximum());
     }
 
-    public final RAMSetPanel getRAMBox() {
-        return ram_panel;
+    @Override
+    public final void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public final void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public final void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public final void mouseExited(MouseEvent e) {
     }
 }

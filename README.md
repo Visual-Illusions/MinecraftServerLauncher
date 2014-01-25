@@ -1,6 +1,6 @@
 Visual Illusions Minecraft Server Launcher
 ==========================
-Copyright &copy; 2013 Visual Illusions Entertainment
+Copyright &copy; 2013-2014 Visual Illusions Entertainment
 
 Local Minecraft Server Management Graphical User Interface.<br/>
 Designed to help modders/plugin designers with their development process.
@@ -27,7 +27,7 @@ Legal Info
 ==============
 
 Visual Illusions Minecraft Server Launcher (VIMCSL)<br/>
-Copyright &copy; 2013 Visual Illusions Entertainment<br/>
+Copyright &copy; 2013-2014 Visual Illusions Entertainment<br/>
 
 VIMCSL is free software: you can redistribute it and/or modify<br/>
 it under the terms of the GNU General Public License as published by<br/>
@@ -42,7 +42,7 @@ You should have received a copy of the GNU General Public License along with VIM
 If not, see http://www.gnu.org/licenses/gpl.html<br/>
 
 [Minecraft](http://minecraft.net) is the property of Mojang AB/Notch Development AB<br/>
-Copyright &copy; 2009-2013 [Mojang AB](http://mojang.com)<br/>
+Copyright &copy; 2009-2014 [Mojang AB](http://mojang.com)<br/>
 "Minecraft" is a trademark of Notch Development AB<br/>
 
 Visual Illusions Minecraft Server Launcher and Visual Illusions Entertainment are<br/>

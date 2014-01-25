@@ -1,7 +1,7 @@
 /*
  * This file is part of VisualIllusionsMinecraftServerLauncher.
  *
- * Copyright © 2013 Visual Illusions Entertainment
+ * Copyright © 2013-2014 Visual Illusions Entertainment
  *
  * VisualIllusionsMinecraftServerLauncher is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
  * If not, see http://www.gnu.org/licenses/gpl.html.
  *
  * Minecraft is the property of Mojang AB/Notch Development AB
- * Copyright &copy; 2009-2013 Mojang AB
+ * Copyright &copy; 2009-2014 Mojang AB
  * "Minecraft" is a trademark of Notch Development AB
  *
  * Visual Illusions Minecraft Server Launcher and Visual Illusions Entertainment are
@@ -36,6 +36,7 @@ public final class InputOutputPanel extends JPanel {
 
     private static final long serialVersionUID = 8L;
     private final LogPanel log;
+    private final LogTextPanelControl ltpc;
 
     public InputOutputPanel(CentralPanel central) {
         TitledBorder title_border = new TitledBorder(new EtchedBorder(), "Server I/O");
@@ -48,10 +49,14 @@ public final class InputOutputPanel extends JPanel {
         this.log = new LogPanel(this);
         this.add(log, BorderLayout.CENTER);
         this.add(new InputPanel(this), BorderLayout.SOUTH);
-        this.add(new ClearPanelButton(this), BorderLayout.NORTH);
+        this.add(ltpc = new LogTextPanelControl(this), BorderLayout.NORTH);
     }
 
     public final LogPanel getLogPanel() {
         return this.log;
+    }
+
+    public final LogTextPanelControl getLTPControl() {
+        return this.ltpc;
     }
 }

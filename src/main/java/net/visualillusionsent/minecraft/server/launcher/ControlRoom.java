@@ -1,7 +1,7 @@
 /*
  * This file is part of VisualIllusionsMinecraftServerLauncher.
  *
- * Copyright © 2013 Visual Illusions Entertainment
+ * Copyright © 2013-2014 Visual Illusions Entertainment
  *
  * VisualIllusionsMinecraftServerLauncher is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
  * If not, see http://www.gnu.org/licenses/gpl.html.
  *
  * Minecraft is the property of Mojang AB/Notch Development AB
- * Copyright &copy; 2009-2013 Mojang AB
+ * Copyright &copy; 2009-2014 Mojang AB
  * "Minecraft" is a trademark of Notch Development AB
  *
  * Visual Illusions Minecraft Server Launcher and Visual Illusions Entertainment are
@@ -40,9 +40,13 @@ import java.io.File;
 import java.util.jar.JarFile;
 import java.util.jar.Manifest;
 import java.util.logging.Level;
+import java.util.regex.Pattern;
 
 /** @author Jason (darkdiplomat) */
 public final class ControlRoom extends Thread {
+    private static final Pattern modLoggerPattern = Pattern.compile("\\[\\d{2}:\\d{2}:\\d{2}(])?&nbsp;(\\[)?\\w+\\]:&nbsp;.+");
+    private static final Pattern log4jPattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}&nbsp;\\d{2}:\\d{2}:\\d{2},\\d{3}&nbsp;.+");
+
     private final String span = "<p style=\"color:%s\">%s</p>";
     private LaunchLogger logger = new LaunchLogger();
     private CentralPanel central;
@@ -208,21 +212,33 @@ public final class ControlRoom extends Thread {
         return status;
     }
 
+    private static boolean stacking;
+
     public static final void addLineToQueue(String line, Level level) {
-        String colorized = "white";
+        String colorized = "#999999";
         String input;
+
         if (level == null) {
-            if (line.contains("[WARNING]")) {
-                colorized = "#EB7400";
+            boolean is4j = false;
+            if (modLoggerPattern.matcher(line).matches() || (is4j = log4jPattern.matcher(line).matches())) {
+                String prefix = line.substring(0, !is4j ? line.indexOf(':', 8/* Adjust 8 characters to avoid Time*/) : 60);
+                if (prefix.contains("WARN"/*ING*/) || prefix.contains("DEBUG")) {
+                    colorized = "#EB7400";
+                    stacking = false;
+                }
+                else if (prefix.contains("SEVERE") || prefix.contains("ERROR") || prefix.contains("FATAL")) {
+                    colorized = "red";
+                    stacking = true;
+                }
+                else if (prefix.contains("INFO")) {
+                    colorized = "white";
+                    stacking = false;
+                }
             }
-            else if (line.contains("[SEVERE]")) {
-                colorized = "red";
-            }
-            else if (line.contains("[SYS-OUT]")) {
-                colorized = "#999999";
-            }
-            else if (!line.contains("[INFO]")) {
-                colorized = "#FF0033";
+            else {
+                if (stacking) {
+                    colorized = "red";
+                }
             }
             input = $.formatter.convertToHTML(String.format($.span, colorized, line));
         }
