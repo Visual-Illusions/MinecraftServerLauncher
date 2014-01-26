@@ -34,10 +34,13 @@ public final class LogTextPanelControl extends JPanel {
     private final ToBottomButtom astButton;
 
     public LogTextPanelControl(InputOutputPanel iopanel) {
-        this.add(new ClearPanelButton(iopanel));
-        this.add(astButton = new ToBottomButtom(iopanel));
+        this.setLayout(new GridBagLayout());
         this.setBackground(Color.DARK_GRAY);
         this.setForeground(Color.LIGHT_GRAY);
-        this.setSize(140, 42);
+        this.setSize(new Dimension(200, 15));
+        this.setBounds(2, 2, 200, 15);
+
+        this.add(new ClearPanelButton(iopanel));
+        this.add(astButton = new ToBottomButtom(iopanel));
     }
 }

@@ -24,6 +24,7 @@
  */
 package net.visualillusionsent.minecraft.server.launcher.controller.actions;
 
+import net.visualillusionsent.minecraft.server.launcher.ButtonFontConstants;
 import net.visualillusionsent.minecraft.server.launcher.ControlRoom;
 
 import javax.swing.*;
@@ -46,6 +47,7 @@ public final class ServerRestartButton extends JButton implements MouseListener 
         addMouseListener(this);
         setEnabled(false);
         setVisible(true);
+        this.setFont(ButtonFontConstants.BUTTON_MONO_PLAIN_12.getFont());
     }
 
     public final void mouseClicked(MouseEvent event) {

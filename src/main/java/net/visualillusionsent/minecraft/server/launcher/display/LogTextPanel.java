@@ -32,7 +32,6 @@ import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultCaret;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
 import java.awt.*;
@@ -60,7 +59,6 @@ public final class LogTextPanel extends JTextPane implements MouseListener {
         this.setEditorKit(kit);
         this.setDocument(doc);
         this.addMouseListener(this);
-        ((DefaultCaret) this.getCaret()).setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
         addHyperlinkListener(new HyperlinkListener() {
             public void hyperlinkUpdate(HyperlinkEvent hle) {
                 if (hle.getEventType() == HyperlinkEvent.EventType.ACTIVATED)
@@ -71,7 +69,6 @@ public final class LogTextPanel extends JTextPane implements MouseListener {
                     }
             }
         });
-        this.setAutoscrolls(true);
         this.clear();
     }
 
@@ -79,7 +76,7 @@ public final class LogTextPanel extends JTextPane implements MouseListener {
         ensureSize();
         try {
             ControlRoom.logFine(log);
-            kit.insertHTML(doc, doc.getLength(), log.concat("\n"), 0, 0, null);
+            kit.insertHTML(doc, doc.getLength(), log, 0, 0, null);
         }
         catch (BadLocationException e) {
         }

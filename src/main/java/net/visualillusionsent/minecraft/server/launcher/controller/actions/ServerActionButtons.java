@@ -45,14 +45,10 @@ public final class ServerActionButtons extends JComponent {
         setMinimumSize(size);
         setMaximumSize(size);
         setLayout(new BoxLayout(this, 1));
-        start = new ServerStartButton(this);
-        stop = new ServerStopButton(this);
-        restart = new ServerRestartButton(this);
-        kill = new ServerKillButton(this);
-        add(start, this);
-        add(stop, this);
-        add(restart, this);
-        add(kill, this);
+        add(start = new ServerStartButton(this), this);
+        add(stop = new ServerStopButton(this), this);
+        add(restart = new ServerRestartButton(this), this);
+        add(kill = new ServerKillButton(this), this);
         setVisible(true);
     }
 

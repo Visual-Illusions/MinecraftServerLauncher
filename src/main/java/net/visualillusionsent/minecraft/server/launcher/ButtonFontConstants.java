@@ -22,45 +22,28 @@
  * Visual Illusions Minecraft Server Launcher and Visual Illusions Entertainment are
  * NOT affilated with, endorsed by, or sponsored by Mojang AB or Notch Development AB.
  */
-package net.visualillusionsent.minecraft.server.launcher.display;
+package net.visualillusionsent.minecraft.server.launcher;
 
-import net.visualillusionsent.minecraft.server.launcher.ButtonFontConstants;
-
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-/** @author Jason (darkdiplomat) */
-public final class ClearPanelButton extends JButton implements MouseListener {
+import static java.awt.Font.MONOSPACED;
+import static java.awt.Font.PLAIN;
 
-    private static final long serialVersionUID = 4228721679109169330L;
-    private final LogTextPanel log_text;
+/**
+ * @author Jason (darkdiplomat)
+ */
+public enum ButtonFontConstants {
 
-    public ClearPanelButton(InputOutputPanel iopanel) {
-        super("Clear Log");
-        this.setFont(ButtonFontConstants.BUTTON_MONO_PLAIN_8.getFont());
-        this.setSize(new Dimension(20, 12));
-        this.addMouseListener(this);
-        this.setEnabled(true);
-        this.setVisible(true);
-        this.log_text = iopanel.getLogPanel().getLogTextPanel();
+    BUTTON_MONO_PLAIN_8(MONOSPACED, PLAIN, 8),
+    BUTTON_MONO_PLAIN_12(MONOSPACED, PLAIN, 12),;
+
+    private Font font;
+
+    private ButtonFontConstants(String name, int style, int size) {
+        this.font = new Font(name, style, size);
     }
 
-    public final void mouseClicked(MouseEvent event) {
-        log_text.clear();
+    public Font getFont() {
+        return font;
     }
-
-    public final void mouseEntered(MouseEvent event) {
-    }
-
-    public final void mouseExited(MouseEvent event) {
-    }
-
-    public final void mousePressed(MouseEvent event) {
-    }
-
-    public final void mouseReleased(MouseEvent event) {
-    }
-
 }

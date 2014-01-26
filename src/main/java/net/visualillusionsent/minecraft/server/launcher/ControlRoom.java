@@ -70,6 +70,7 @@ public final class ControlRoom extends Thread {
     }
 
     public static final void startServer() {
+        stacktracing = false;
         $.pad.startServer();
     }
 
@@ -246,10 +247,14 @@ public final class ControlRoom extends Thread {
             colorized = "green";
             if (level == Level.WARNING) {
                 colorized = "#EB7400";
+                stacktracing = false;
             }
             else if (level == Level.SEVERE || line.startsWith("Exception") || stacktracing) {
                 colorized = "red";
                 stacktracing = true;
+            }
+            else {
+                stacktracing = false;
             }
             input = String.format($.span, colorized, line);
         }

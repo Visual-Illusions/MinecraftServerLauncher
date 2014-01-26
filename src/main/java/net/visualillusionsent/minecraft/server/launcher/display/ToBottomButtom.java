@@ -24,6 +24,8 @@
  */
 package net.visualillusionsent.minecraft.server.launcher.display;
 
+import net.visualillusionsent.minecraft.server.launcher.ButtonFontConstants;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -38,7 +40,9 @@ public class ToBottomButtom extends JButton implements MouseListener {
     public ToBottomButtom(InputOutputPanel iopanel) {
         super("Return to Bottom");
         this.setSelected(true);
-        Dimension size = new Dimension(20, 25);
+        this.setFont(ButtonFontConstants.BUTTON_MONO_PLAIN_8.getFont());
+        this.setAlignmentX(LEFT_ALIGNMENT);
+        Dimension size = new Dimension(20, 12);
         this.setSize(size);
         this.setEnabled(true);
         this.setVisible(true);
