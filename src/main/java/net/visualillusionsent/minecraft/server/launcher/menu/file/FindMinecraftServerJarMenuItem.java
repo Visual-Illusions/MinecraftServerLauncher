@@ -40,6 +40,8 @@ import net.visualillusionsent.minecraft.server.launcher.info.VanillaServerInfo;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.jar.Attributes;
 import java.util.jar.JarFile;
@@ -57,6 +59,9 @@ final class FindMinecraftServerJarMenuItem extends JMenuItem implements ActionLi
         createFileChoose();
         this.fmenu = fmenu;
         this.addActionListener(this);
+
+        this.setMnemonic(KeyEvent.VK_F);
+        this.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, InputEvent.ALT_DOWN_MASK));
     }
 
     public final void actionPerformed(ActionEvent e) {

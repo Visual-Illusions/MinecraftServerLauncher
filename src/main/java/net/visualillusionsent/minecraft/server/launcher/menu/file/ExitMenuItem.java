@@ -27,6 +27,8 @@ package net.visualillusionsent.minecraft.server.launcher.menu.file;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 
 /** @author Jason (darkdiplomat) */
@@ -38,6 +40,8 @@ final class ExitMenuItem extends JMenuItem implements ActionListener {
     ExitMenuItem(FileMenu fmenu) {
         super("Exit");
         this.fmenu = fmenu;
+        this.setMnemonic(KeyEvent.VK_X);
+        this.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.ALT_DOWN_MASK));
         this.addActionListener(this);
     }
 

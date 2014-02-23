@@ -35,9 +35,9 @@ public final class FileMenu extends JMenu {
     public FileMenu(MainMenuBar mmb) {
         super("File");
         this.main = mmb;
-
         this.add(new FindMinecraftServerJarMenuItem(this));
         this.add(new ExitMenuItem(this));
+
     }
 
     public final MainMenuBar getMain() {

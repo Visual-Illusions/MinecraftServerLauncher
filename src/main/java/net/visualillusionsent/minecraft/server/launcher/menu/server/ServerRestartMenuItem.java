@@ -29,6 +29,8 @@ import net.visualillusionsent.minecraft.server.launcher.ControlRoom;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 
 /** @author Jason (darkdiplomat) */
 public final class ServerRestartMenuItem extends JMenuItem implements ActionListener {
@@ -38,6 +40,9 @@ public final class ServerRestartMenuItem extends JMenuItem implements ActionList
         super("Restart");
         this.setEnabled(false);
         this.addActionListener(this);
+
+        this.setMnemonic(KeyEvent.VK_R);
+        this.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_DOWN_MASK));
     }
 
     public void actionPerformed(ActionEvent e) {

@@ -28,6 +28,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileInputStream;
@@ -98,6 +100,8 @@ public final class FileHistory {
                     MenuItemWithFixedTooltip item = new MenuItemWithFixedTooltip((i + 1) + ": " + (String) itemnameHistory.get(i));
                     item.setToolTipText((String) pathnameHistory.get(i));
                     item.addActionListener(new ItemListener(i));
+                    item.setMnemonic(KeyEvent.VK_1 + i);
+                    item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1 + i, InputEvent.ALT_DOWN_MASK));
                     fileMenu.add(item);
                 }
                 ois.close();
