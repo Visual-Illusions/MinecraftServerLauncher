@@ -45,7 +45,7 @@ public final class CopyrightPanel extends JPanel {
         JLabel copyright_lb = new JLabel();
         copyright_lb.setForeground(Color.LIGHT_GRAY);
         copyright_lb.setFont(new Font(Font.SERIF, Font.BOLD, 10));
-        copyright_lb.setText("<html><p style=\"text-align:center\">Copyright &copy; 2013 Visual Illusions Entertainment -- NOT affilated with, endorsed by, or sponsored by Mojang AB</p></html>");
+        copyright_lb.setText("<html><p style=\"text-align:center\">Copyright &copy; 2013-2014 Visual Illusions Entertainment -- NOT affilated with, endorsed by, or sponsored by Mojang AB</p></html>");
         copyright_lb.setLocation(0, 0);
         return copyright_lb;
     }
