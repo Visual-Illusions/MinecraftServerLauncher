@@ -33,8 +33,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /** @author Jason (darkdiplomat) */
-public class ServerKillButton extends JButton
-        implements MouseListener {
+public class ServerKillButton extends JButton implements MouseListener {
+
+    private static final long serialVersionUID = 231329022014L;
+
     public ServerKillButton(ServerActionButtons sab) {
         super("Force Kill");
         Dimension size = new Dimension(150, 25);
@@ -45,12 +47,13 @@ public class ServerKillButton extends JButton
         addMouseListener(this);
         setEnabled(false);
         setVisible(true);
-        this.setFont(ButtonFontConstants.BUTTON_MONO_PLAIN_12.getFont());
+        setFont(ButtonFontConstants.BUTTON_MONO_PLAIN_12.getFont());
     }
 
     public final void mouseClicked(MouseEvent event) {
-        if (isEnabled())
+        if (isEnabled()) {
             ControlRoom.killServer();
+        }
     }
 
     public final void mouseEntered(MouseEvent event) {

@@ -47,11 +47,11 @@ public final class ServerStopButton extends JButton implements MouseListener {
         addMouseListener(this);
         setEnabled(false);
         setVisible(true);
-        this.setFont(ButtonFontConstants.BUTTON_MONO_PLAIN_12.getFont());
+        setFont(ButtonFontConstants.BUTTON_MONO_PLAIN_12.getFont());
     }
 
     public final void mouseClicked(MouseEvent event) {
-        if (this.isEnabled()) {
+        if (isEnabled()) {
             ControlRoom.stopServer();
         }
     }

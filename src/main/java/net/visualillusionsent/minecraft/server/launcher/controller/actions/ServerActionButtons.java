@@ -32,6 +32,7 @@ import java.awt.*;
 
 /** @author Jason (darkdiplomat) */
 public final class ServerActionButtons extends JComponent {
+
     private static final long serialVersionUID = 1785578261083028370L;
     private final JButton stop;
     private final JButton start;
@@ -44,7 +45,7 @@ public final class ServerActionButtons extends JComponent {
         setPreferredSize(size);
         setMinimumSize(size);
         setMaximumSize(size);
-        setLayout(new BoxLayout(this, 1));
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         add(start = new ServerStartButton(this), this);
         add(stop = new ServerStopButton(this), this);
         add(restart = new ServerRestartButton(this), this);
@@ -54,6 +55,7 @@ public final class ServerActionButtons extends JComponent {
 
     public final void setState() {
         boolean running = ControlRoom.isServerRunning();
+        
         start.setEnabled(!running);
         stop.setEnabled(running);
         restart.setEnabled(running);

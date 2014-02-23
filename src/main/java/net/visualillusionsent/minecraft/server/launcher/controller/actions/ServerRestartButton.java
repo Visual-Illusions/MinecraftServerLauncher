@@ -51,7 +51,7 @@ public final class ServerRestartButton extends JButton implements MouseListener 
     }
 
     public final void mouseClicked(MouseEvent event) {
-        if (this.isEnabled()) {
+        if (isEnabled()) {
             ControlRoom.restartServer();
         }
     }
