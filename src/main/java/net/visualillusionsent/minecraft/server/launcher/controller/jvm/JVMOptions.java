@@ -45,41 +45,39 @@ public final class JVMOptions extends JPanel {
     public JVMOptions(ServerOptionsPanel sop) {
         TitledBorder title_border = new TitledBorder(new EtchedBorder(), "JVM Options");
         title_border.setTitleColor(Color.LIGHT_GRAY);
-        this.setBorder(title_border);
-        this.setBackground(Color.DARK_GRAY);
-        this.setLayout(null);
-        this.setVisible(true);
+        setBorder(title_border);
+        setBackground(Color.DARK_GRAY);
+        setLayout(null);
+        setVisible(true);
         Dimension size = new Dimension(220, 200);
-        this.setPreferredSize(size);
-        this.setMinimumSize(size);
-        this.setMaximumSize(size);
-        sweepGC = new JCheckBox("UseConcMarkSweepGC");
-        sweepGC.setBounds(5, 20, 200, 15);
-        sweepGC.setSelected(LaunchSettings.getUseConcMarkSweepGC());
-        sweepGC.setBackground(Color.DARK_GRAY);
-        sweepGC.setForeground(Color.LIGHT_GRAY);
-        cmsIncro = new JCheckBox("CMSIncrementalPacing");
-        cmsIncro.setBounds(5, 40, 200, 15);
-        cmsIncro.setSelected(LaunchSettings.getCMSIncrementalPacing());
-        cmsIncro.setBackground(Color.DARK_GRAY);
-        cmsIncro.setForeground(Color.LIGHT_GRAY);
-        aggressiveOpts = new JCheckBox("AggressiveOpts");
-        aggressiveOpts.setBounds(5, 60, 200, 15);
-        aggressiveOpts.setSelected(LaunchSettings.getAggressiveOpts());
-        aggressiveOpts.setBackground(Color.DARK_GRAY);
-        aggressiveOpts.setForeground(Color.LIGHT_GRAY);
+        setPreferredSize(size);
+        setMinimumSize(size);
+        setMaximumSize(size);
 
-        this.add(sweepGC);
-        this.add(cmsIncro);
-        this.add(aggressiveOpts);
-        this.extra = new JVMExtraPanel(this);
-        this.add(extra);
-        this.gcthreads = getGCThreadBox();
-        this.add(getGCThreadList());
+        sweepGC = getCheckBox("UseConcMarkSweepGC", 20, LaunchSettings.getUseConcMarkSweepGC());
+        cmsIncro = getCheckBox("CMSIncrementalPacing", 40, LaunchSettings.getCMSIncrementalPacing());
+        aggressiveOpts = getCheckBox("AggressiveOpts", 60, LaunchSettings.getAggressiveOpts());
+        extra = new JVMExtraPanel(this);
+        gcthreads = getGCThreadBox();
+
+        add(sweepGC);
+        add(cmsIncro);
+        add(aggressiveOpts);
+        add(extra);
+        add(getGCThreadList());
         ControlRoom.setJVMOptions(this);
     }
 
-    private final JPanel getGCThreadList() {
+    private JCheckBox getCheckBox(String name, int yOffset, boolean preSelect) {
+        JCheckBox temp = new JCheckBox(name);
+        temp.setBounds(5, yOffset, 200, 15);
+        temp.setSelected(preSelect);
+        temp.setBackground(Color.DARK_GRAY);
+        temp.setForeground(Color.LIGHT_GRAY);
+        return temp;
+    }
+
+    private JPanel getGCThreadList() {
         JPanel gcthreadpanel = new JPanel();
         TitledBorder title_border = new TitledBorder(new EtchedBorder(), "Parallel GC Threads");
         title_border.setTitleColor(Color.LIGHT_GRAY);
@@ -93,11 +91,12 @@ public final class JVMOptions extends JPanel {
         return gcthreadpanel;
     }
 
-    private final JComboBox getGCThreadBox() {
+    private JComboBox getGCThreadBox() {
         JComboBox gcThreadList = new JComboBox();
         gcThreadList.addItem("Default (1)");
-        gcThreadList.addItem("Max (" + String.valueOf(maxProcess + ")"));
-        for (int index = 2; index < Runtime.getRuntime().availableProcessors(); index++) {
+        gcThreadList.addItem("Max (" + maxProcess + ")");
+        int processors = Runtime.getRuntime().availableProcessors();
+        for (int index = 2; index < processors; index++) {
             gcThreadList.addItem(String.valueOf(index));
         }
         gcThreadList.setMaximumRowCount(10);

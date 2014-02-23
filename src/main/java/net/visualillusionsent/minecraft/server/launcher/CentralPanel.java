@@ -73,7 +73,7 @@ public final class CentralPanel extends JFrame {
         this.addWindowListener(new LauncherWindowAdapter(this));
         this.setResizable(true);
         this.setLocationRelativeTo((Component) null);
-        this.setMinimumSize(new Dimension(680, 480));
+        this.setMinimumSize(new Dimension(700, 500));
     }
 
     public final ControlRoom hailControlRoom() {

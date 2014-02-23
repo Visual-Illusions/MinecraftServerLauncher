@@ -31,7 +31,7 @@ import java.awt.*;
  * @author Jason (darkdiplomat)
  */
 public final class LogTextPanelControl extends JPanel {
-    private final ToBottomButtom astButton;
+    private final ToBottomButton astButton;
 
     public LogTextPanelControl(InputOutputPanel iopanel) {
         this.setLayout(new GridBagLayout());
@@ -41,6 +41,6 @@ public final class LogTextPanelControl extends JPanel {
         this.setBounds(2, 2, 200, 15);
 
         this.add(new ClearPanelButton(iopanel));
-        this.add(astButton = new ToBottomButtom(iopanel));
+        this.add(astButton = new ToBottomButton(iopanel));
     }
 }

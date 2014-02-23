@@ -41,20 +41,21 @@ public final class JVMExtraPanel extends JPanel implements MouseListener {
     private final TextField textField;
 
     public JVMExtraPanel(JVMOptions opt) {
-        this.setLayout(null);
+        setLayout(null);
         TitledBorder title_border = new TitledBorder(new EtchedBorder(), "Custom JVM Arguments");
         title_border.setTitleColor(Color.LIGHT_GRAY);
-        this.setBorder(title_border);
-        this.setBackground(Color.DARK_GRAY);
-        this.setVisible(true);
-        this.setBounds(5, 130, 210, 50);
-        textField = new TextField();
-        textField.setBounds(10, 20, 190, 20);
-        textField.addMouseListener(this);
-        textField.setText(LaunchSettings.getJVMCustomArgs());
-        textField.setCaretPosition(textField.getText().length());
-        this.setToolTipText("Custom Command Line JVM Arguments.");
-        this.add(textField);
+        setBorder(title_border);
+        setBackground(Color.DARK_GRAY);
+        setVisible(true);
+        setBounds(5, 130, 210, 50);
+        TextField temp = new TextField();
+        temp.setBounds(10, 20, 190, 20);
+        temp.addMouseListener(this);
+        temp.setText(LaunchSettings.getJVMCustomArgs());
+        temp.setCaretPosition(temp.getText().length());
+        textField = temp;
+        setToolTipText("Custom Command Line JVM Arguments.");
+        add(textField);
     }
 
     public final void mouseClicked(MouseEvent event) {

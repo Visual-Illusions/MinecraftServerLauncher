@@ -34,10 +34,10 @@ import java.awt.event.MouseListener;
 /**
  * @author Jason (darkdiplomat)
  */
-public class ToBottomButtom extends JButton implements MouseListener {
+public class ToBottomButton extends JButton implements MouseListener {
     private final LogPanel logPanel;
 
-    public ToBottomButtom(InputOutputPanel iopanel) {
+    public ToBottomButton(InputOutputPanel iopanel) {
         super("Return to Bottom");
         this.setSelected(true);
         this.setFont(ButtonFontConstants.BUTTON_MONO_PLAIN_8.getFont());
